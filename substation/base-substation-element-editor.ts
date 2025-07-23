@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { LitElement, TemplateResult, html } from 'lit';
 import { property, query, queryAll } from 'lit/decorators.js';
 
@@ -6,10 +5,10 @@ import '@material/mwc-menu';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-icon-button';
 import type { IconButton } from '@material/mwc-icon-button';
-import type { ListItem } from '@material/mwc-list/mwc-list-item';
+import type { ListItem } from '@material/mwc-list/mwc-list-item.js';
 import type { Menu } from '@material/mwc-menu';
 
-import { newEditEvent } from '@openscd/open-scd-core';
+import { newEditEvent } from '@omicronenergy/oscd-api/utils.js';
 import { getChildren } from '@openenergytools/scl-lib';
 
 import { newCreateWizardEvent, newEditWizardEvent } from '../foundation.js';
@@ -56,7 +55,7 @@ export default class BaseSubstationElementEditor extends LitElement {
     this.dispatchEvent(
       newEditEvent({
         node: this.element,
-      })
+      }),
     );
   }
 
@@ -69,13 +68,13 @@ export default class BaseSubstationElementEditor extends LitElement {
 
     return getChildren(this.element)
       .filter(
-        child => child !== 'Text' || (child === 'Text' && !alreadyHasText)
+        child => child !== 'Text' || (child === 'Text' && !alreadyHasText),
       )
       .map(
         child =>
           html`<mwc-list-item class="action add" value="${child}"
             ><span>${child}</span></mwc-list-item
-          >`
+          >`,
       );
   }
 

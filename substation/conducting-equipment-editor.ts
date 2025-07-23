@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -73,13 +72,13 @@ export class ConductingEquipmentEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${renderEqFunctions(this.element, this.editCount, this.showuserdef)}
@@ -87,7 +86,7 @@ export class ConductingEquipmentEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
         </oscd-action-pane
         ></oscd-action-pane
@@ -112,7 +111,7 @@ export function renderConductingEquipments(
   parent: Element,
   editCount: number,
   showfunctions: boolean,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const condEqs = getChildElementsByTagName(parent, 'ConductingEquipment');
 
@@ -124,7 +123,7 @@ export function renderConductingEquipments(
           .editCount=${editCount}
           ?showfunctions=${showfunctions}
           ?showuserdef=${showuserdef}
-        ></conducting-equipment-editor>`
+        ></conducting-equipment-editor>`,
     )}`;
 
   return condEqs.length
@@ -136,7 +135,7 @@ export function renderConductingEquipments(
               .element=${conductingEquipment}
               ?showfunctions=${showfunctions}
               ?showuserdef=${showuserdef}
-            ></conducting-equipment-editor>`
+            ></conducting-equipment-editor>`,
         )}
       </div>`
     : html``;

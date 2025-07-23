@@ -1,11 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-expressions */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { expect, fixture, html } from '@open-wc/testing';
 
 import { SinonSpy, spy } from 'sinon';
 
-import { isRemove } from '@openscd/open-scd-core';
+import { isRemove } from '@omicronenergy/oscd-api/utils.js';
 
 import { substationDoc } from '../substation.testfiles.js';
 
@@ -17,13 +14,13 @@ const bay = new DOMParser()
   .querySelector('Bay[name="testBay1"]')!;
 
 describe('Component for SCL element Bay ', () => {
-  let editor: BayEditor;
+  let bayEditor: BayEditor;
 
   let eventSpy: SinonSpy;
 
   beforeEach(async () => {
-    editor = await fixture(
-      html`<bay-editor .element="${bay}" ?showfunctions=${true}></bay-editor>`
+    bayEditor = await fixture(
+      html`<bay-editor .element="${bay}" ?showfunctions=${true}></bay-editor>`,
     );
 
     eventSpy = spy();
@@ -32,10 +29,17 @@ describe('Component for SCL element Bay ', () => {
     window.addEventListener('oscd-create-wizard-request', eventSpy);
   });
 
-  it('sends a wizard edit request', () => {
-    editor.editActionable?.click();
+  afterEach(() => {
+    window.removeEventListener('oscd-edit', eventSpy);
+    window.removeEventListener('oscd-edit-wizard-request', eventSpy);
+    window.removeEventListener('oscd-create-wizard-request', eventSpy);
+    eventSpy.resetHistory();
+  });
 
-    expect(eventSpy).to.have.been.calledOnce;
+  it('sends a wizard edit request', () => {
+    bayEditor.editActionable?.click();
+
+    expect(eventSpy.callCount).to.equal(1);
 
     const event = eventSpy.args[0][0];
     expect(event.type).to.equal('oscd-edit-wizard-request');
@@ -43,10 +47,10 @@ describe('Component for SCL element Bay ', () => {
   });
 
   it('sends a wizard create request', () => {
-    editor.addActionable?.forEach(add => {
+    bayEditor.addActionable?.forEach(add => {
       add.click();
 
-      expect(eventSpy).to.have.been.calledOnce;
+      expect(eventSpy.callCount).to.equal(1);
 
       const event = eventSpy.args[0][0];
       expect(event.type).to.equal('oscd-create-wizard-request');
@@ -58,9 +62,9 @@ describe('Component for SCL element Bay ', () => {
   });
 
   it('allows to remove an existing Bay element', () => {
-    editor.removeActionable?.click();
+    bayEditor.removeActionable?.click();
 
-    expect(eventSpy).to.have.been.calledOnce;
+    expect(eventSpy.callCount).to.equal(1);
 
     const event = eventSpy.args[0][0];
 

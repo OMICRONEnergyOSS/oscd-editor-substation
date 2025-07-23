@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element GeneralEquipment ', () => {
         html`<general-equipment-editor
           .element=${subFunc}
           ?showfunctions=${true}
-        ></general-equipment-editor>`
+        ></general-equipment-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '400';
@@ -58,7 +57,7 @@ describe('Component for SCL element GeneralEquipment ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `general-equipment-editor/#1 add menu visible`
+        `general-equipment-editor/#1 add menu visible`,
       );
     });
   });
@@ -73,7 +72,7 @@ describe('Component for SCL element GeneralEquipment ', () => {
       editor = await fixture(
         html`<general-equipment-editor
           .element=${subFunc}
-        ></general-equipment-editor>`
+        ></general-equipment-editor>`,
       );
       document.body.style.width = '200';
       document.body.style.height = '200';
@@ -95,7 +94,7 @@ describe('Component for SCL element GeneralEquipment ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `general-equipment-editor/#2 Unfocused with showfunction=false`
+        `general-equipment-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -111,7 +110,7 @@ describe('Component for SCL element GeneralEquipment ', () => {
         html`<general-equipment-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></general-equipment-editor>`
+        ></general-equipment-editor>`,
       );
       document.body.style.width = '500';
       document.body.style.height = '400';
@@ -133,7 +132,7 @@ describe('Component for SCL element GeneralEquipment ', () => {
       await timeout(200);
       await visualDiff(
         document.body,
-        `general-equipment-editor/#3 Focused with showfunction=true`
+        `general-equipment-editor/#3 Focused with showfunction=true`,
       );
     });
   });

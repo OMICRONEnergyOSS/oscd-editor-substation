@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element Line ', () => {
         html`<line-editor
           .element=${line}
           ?showfunctions=${true}
-        ></line-editor>`
+        ></line-editor>`,
       );
       document.body.style.width = '300';
       document.body.style.height = '500';
@@ -68,7 +67,7 @@ describe('Component for SCL element Line ', () => {
         .querySelector(`Line[name="testLine2"]`)!;
 
       editor = await fixture(
-        html`<line-editor .element=${line}></line-editor>`
+        html`<line-editor .element=${line}></line-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '600';
@@ -86,7 +85,7 @@ describe('Component for SCL element Line ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `line-editor/#2 Unfocused with showfunction=false`
+        `line-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -102,7 +101,7 @@ describe('Component for SCL element Line ', () => {
         html`<line-editor
           .element=${line}
           ?showfunctions=${true}
-        ></line-editor>`
+        ></line-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '1000';
@@ -119,7 +118,7 @@ describe('Component for SCL element Line ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `line-editor/#3 Focused with showfunction=true`
+        `line-editor/#3 Focused with showfunction=true`,
       );
     });
   });

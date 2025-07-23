@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -41,12 +40,13 @@ export class VoltageLevelEditor extends BaseSubstationElementEditor {
   renderBay(): TemplateResult {
     return html`<div class="container bay">
       ${getChildElementsByTagName(this.element, 'Bay').map(
-        bay => html`<bay-editor
-          .editCount=${this.editCount}
-          .element=${bay}
-          ?showfunctions=${this.showfunctions}
-          ?showuserdef=${this.showuserdef}
-        ></bay-editor>`
+        bay =>
+          html`<bay-editor
+            .editCount=${this.editCount}
+            .element=${bay}
+            ?showfunctions=${this.showfunctions}
+            ?showuserdef=${this.showuserdef}
+          ></bay-editor>`,
       )}
     </div>`;
   }
@@ -72,33 +72,33 @@ export class VoltageLevelEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${renderGeneralEquipment(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPowerTransformerContainer(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${this.renderBay()}
       ${renderFunctions(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
     </oscd-action-pane>`;
   }

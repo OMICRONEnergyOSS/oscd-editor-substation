@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element SubEquipment ', () => {
         html`<tap-changer-editor
           .element=${subFunc}
           ?showfunctions=${true}
-        ></tap-changer-editor>`
+        ></tap-changer-editor>`,
       );
       document.body.style.width = '240';
       document.body.style.height = '400';
@@ -68,7 +67,7 @@ describe('Component for SCL element SubEquipment ', () => {
         .querySelector(`TapChanger[name="ch1"]`)!;
 
       editor = await fixture(
-        html`<tap-changer-editor .element=${subFunc}></tap-changer-editor>`
+        html`<tap-changer-editor .element=${subFunc}></tap-changer-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '600';
@@ -90,7 +89,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `tap-changer-editor/#2 Unfocused with showfunction=false`
+        `tap-changer-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -106,7 +105,7 @@ describe('Component for SCL element SubEquipment ', () => {
         html`<tap-changer-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></tap-changer-editor>`
+        ></tap-changer-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '800';
@@ -128,7 +127,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `tap-changer-editor/#3 Focused with showfunction=true`
+        `tap-changer-editor/#3 Focused with showfunction=true`,
       );
     });
   });

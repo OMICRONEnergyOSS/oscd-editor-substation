@@ -25,10 +25,13 @@ function setShowUserDef(value: 'on' | 'off') {
 }
 
 /** An editor [[`plugin`]] for editing the `Substation` section. */
-export default class SclSubstationEditorPlugin extends LitElement {
+export default class OscdEditorSubstation extends LitElement {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
-  @property({ attribute: false })
+  @property({ type: Object })
   doc!: XMLDocument;
+
+  @property({ type: Object })
+  docs!: Record<string, XMLDocument>;
 
   @property({ type: Number })
   editCount = -1;
@@ -105,19 +108,19 @@ export default class SclSubstationEditorPlugin extends LitElement {
           this.doc.documentElement,
           this.editCount,
           shouldShowFunctions(),
-          shouldShowUserDef()
+          shouldShowUserDef(),
         )}
         ${renderLines(
           this.doc.documentElement,
           this.editCount,
           shouldShowFunctions(),
-          shouldShowUserDef()
+          shouldShowUserDef(),
         )}
         ${renderProcesses(
           this.doc.documentElement,
           this.editCount,
           shouldShowFunctions(),
-          shouldShowUserDef()
+          shouldShowUserDef(),
         )}
       </section>`;
   }
@@ -153,14 +156,14 @@ export default class SclSubstationEditorPlugin extends LitElement {
     }
 
     * {
-      --oscd-action-pane-theme-surface: var(--oscd-theme-base3);
-      --oscd-action-pane-theme-on-surface: var(--oscd-theme-base00);
-      --oscd-action-pane-theme-on-primary: var(--oscd-theme-base2);
+      --oscd-action-pane-theme-surface: var(--oscd-base3);
+      --oscd-action-pane-theme-on-surface: var(--oscd-base00);
+      --oscd-action-pane-theme-on-primary: var(--oscd-base2);
       --oscd-action-pane-theme-font: 'Roboto';
       --oscd-action-icon-theme-font: 'Roboto';
 
-      --oscd-action-icon-theme-on-surface: var(--oscd-theme-base00);
-      --oscd-action-icon-theme-on-primary: var(--oscd-theme-base2);
+      --oscd-action-icon-theme-on-surface: var(--oscd-base00);
+      --oscd-action-icon-theme-on-primary: var(--oscd-base2);
     }
 
     :host {

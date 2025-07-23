@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
@@ -51,13 +50,13 @@ export class GeneralEquipmentEditor extends BaseSubstationElementEditor {
           this.element,
           this.editCount,
           this.showfunctions,
-          this.showuserdef
+          this.showuserdef,
         )}
         ${renderPrivate(
           this.element,
           this.editCount,
           this.showfunctions,
-          this.showuserdef
+          this.showuserdef,
         )}
         ${renderLNodes(this.element, this.editCount, this.showfunctions)}
         ${renderEqFunctions(this.element, this.editCount, this.showuserdef)}
@@ -102,11 +101,11 @@ export function renderGeneralEquipment(
   parent: Element,
   editCount: number,
   showfunctions: boolean,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const generalEquipment = getChildElementsByTagName(
     parent,
-    'GeneralEquipment'
+    'GeneralEquipment',
   );
 
   if (showfunctions)
@@ -117,7 +116,7 @@ export function renderGeneralEquipment(
           .element=${gEquipment}
           ?showfunctions=${showfunctions}
           ?showuserdef=${showuserdef}
-        ></general-equipment-editor>`
+        ></general-equipment-editor>`,
     )}`;
 
   return generalEquipment.length
@@ -129,7 +128,7 @@ export function renderGeneralEquipment(
               .element=${gEquipment}
               ?showfunctions=${showfunctions}
               ?showuserdef=${showuserdef}
-            ></general-equipment-editor>`
+            ></general-equipment-editor>`,
         )}
       </div>`
     : html``;

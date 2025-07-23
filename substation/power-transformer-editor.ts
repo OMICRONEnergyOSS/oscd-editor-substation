@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -39,7 +38,7 @@ export class PowerTransformerEditor extends BaseSubstationElementEditor {
   private renderTransformerWinding(): TemplateResult {
     const transformerWindings = getChildElementsByTagName(
       this.element,
-      'TransformerWinding'
+      'TransformerWinding',
     );
 
     return html`${transformerWindings.map(
@@ -49,11 +48,10 @@ export class PowerTransformerEditor extends BaseSubstationElementEditor {
           .editCount=${this.editCount}
           ?showfunctions=${this.showfunctions}
           ?showuserdef=${this.showuserdef}
-        ></transformer-winding-editor>`
+        ></transformer-winding-editor>`,
     )}`;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   renderContentIcon(): TemplateResult {
     return html`<mwc-icon slot="icon"
         >${powerTransformerTwoWindingIcon}</mwc-icon
@@ -95,13 +93,13 @@ export class PowerTransformerEditor extends BaseSubstationElementEditor {
           this.element,
           this.editCount,
           this.showfunctions,
-          this.showuserdef
+          this.showuserdef,
         )}
         ${renderPrivate(
           this.element,
           this.editCount,
           this.showfunctions,
-          this.showuserdef
+          this.showuserdef,
         )}
         ${renderLNodes(this.element, this.editCount, this.showfunctions)}
         ${this.renderTransformerWinding()}
@@ -110,7 +108,7 @@ export class PowerTransformerEditor extends BaseSubstationElementEditor {
           this.element,
           this.editCount,
           this.showfunctions,
-          this.showuserdef
+          this.showuserdef,
         )}
       </oscd-action-pane> `;
 
@@ -133,7 +131,7 @@ export function renderPowerTransformerContainer(
   parent: Element,
   editCount: number,
   showfunctions: boolean,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const pTrans = getChildElementsByTagName(parent, 'PowerTransformer');
 
@@ -145,7 +143,7 @@ export function renderPowerTransformerContainer(
           .editCount=${editCount}
           ?showfunctions=${showfunctions}
           ?showuserdef=${showuserdef}
-        ></power-transformer-editor>`
+        ></power-transformer-editor>`,
     )}`;
 
   return pTrans.length
@@ -157,7 +155,7 @@ export function renderPowerTransformerContainer(
               .editCount=${editCount}
               ?showfunctions=${showfunctions}
               ?showuserdef=${showuserdef}
-            ></power-transformer-editor>`
+            ></power-transformer-editor>`,
         )}
       </div>`
     : html``;

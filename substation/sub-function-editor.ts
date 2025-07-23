@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
@@ -50,32 +48,32 @@ export class SubFunctionEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${renderGeneralEquipment(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderConductingEquipments(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderSubFunctions(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
     </oscd-action-pane>`;
   }
@@ -108,7 +106,7 @@ export function renderSubFunctions(
   parent: Element,
   editCount: number,
   showfunctions: boolean,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const subfunctions = getChildElementsByTagName(parent, 'SubFunction');
   return html` ${subfunctions.map(
@@ -118,6 +116,6 @@ export function renderSubFunctions(
         .editCount=${editCount}
         ?showfunctions=${showfunctions}
         ?showuserdef=${showuserdef}
-      ></sub-function-editor>`
+      ></sub-function-editor>`,
   )}`;
 }

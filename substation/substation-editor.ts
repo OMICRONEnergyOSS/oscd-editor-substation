@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -48,26 +47,26 @@ export class SubstationEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${renderGeneralEquipment(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPowerTransformerContainer(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${getChildElementsByTagName(this.element, 'VoltageLevel').map(
         voltageLevel =>
@@ -76,13 +75,13 @@ export class SubstationEditor extends BaseSubstationElementEditor {
             .element=${voltageLevel}
             ?showfunctions=${this.showfunctions}
             ?showuserdef=${this.showuserdef}
-          ></voltage-level-editor>`
+          ></voltage-level-editor>`,
       )}
       ${renderFunctions(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
     </oscd-action-pane>`;
   }
@@ -96,7 +95,7 @@ export function renderSubstations(
   parent: Element,
   editCount: number,
   showfunctions: boolean,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const substations = getChildElementsByTagName(parent, 'Substation');
 
@@ -107,6 +106,6 @@ export function renderSubstations(
         .editCount=${editCount}
         ?showfunctions=${showfunctions}
         ?showuserdef=${showuserdef}
-      ></substation-editor>`
+      ></substation-editor>`,
   )}`;
 }

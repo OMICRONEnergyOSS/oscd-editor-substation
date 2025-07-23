@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -50,13 +49,13 @@ export class SubEquipmentEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${renderEqFunctions(this.element, this.editCount, this.showuserdef)}
@@ -83,7 +82,7 @@ export function renderSubEquipments(
   parent: Element,
   editCount: number,
   showfunctions: boolean,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const subEquipments = getChildElementsByTagName(parent, 'SubEquipment');
 
@@ -94,6 +93,6 @@ export function renderSubEquipments(
         .element=${subEquipment}
         ?showfunctions=${showfunctions}
         ?showuserdef=${showuserdef}
-      ></sub-equipment-editor>`
+      ></sub-equipment-editor>`,
   )}`;
 }

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element PowerTransformer ', () => {
         html`<power-transformer-editor
           .element=${subFunc}
           ?showfunctions=${true}
-        ></power-transformer-editor>`
+        ></power-transformer-editor>`,
       );
       document.body.style.width = '300';
       document.body.style.height = '600';
@@ -58,7 +57,7 @@ describe('Component for SCL element PowerTransformer ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `power-transformer-editor/#1 add menu visible`
+        `power-transformer-editor/#1 add menu visible`,
       );
     });
   });
@@ -73,7 +72,7 @@ describe('Component for SCL element PowerTransformer ', () => {
       editor = await fixture(
         html`<power-transformer-editor
           .element=${subFunc}
-        ></power-transformer-editor>`
+        ></power-transformer-editor>`,
       );
       document.body.style.width = '300';
       document.body.style.height = '300';
@@ -95,7 +94,7 @@ describe('Component for SCL element PowerTransformer ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `power-transformer-editor/#2 Unfocused with showfunction=false`
+        `power-transformer-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -111,7 +110,7 @@ describe('Component for SCL element PowerTransformer ', () => {
         html`<power-transformer-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></power-transformer-editor>`
+        ></power-transformer-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '1000';
@@ -133,7 +132,7 @@ describe('Component for SCL element PowerTransformer ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `power-transformer-editor/#3 Focused with showfunction=true`
+        `power-transformer-editor/#3 Focused with showfunction=true`,
       );
     });
   });

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -35,7 +34,7 @@ describe('Component for SCL element EqSubFunction ', () => {
       editor = await fixture(
         html`<eq-sub-function-editor
           .element=${subFunc}
-        ></eq-sub-function-editor>`
+        ></eq-sub-function-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '900';
@@ -54,7 +53,7 @@ describe('Component for SCL element EqSubFunction ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `eq-sub-function-editor/#1 add menu visible`
+        `eq-sub-function-editor/#1 add menu visible`,
       );
     });
   });
@@ -69,7 +68,7 @@ describe('Component for SCL element EqSubFunction ', () => {
       editor = await fixture(
         html`<eq-sub-function-editor
           .element=${subFunc}
-        ></eq-sub-function-editor>`
+        ></eq-sub-function-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '900';
@@ -88,7 +87,7 @@ describe('Component for SCL element EqSubFunction ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `eq-sub-function-editor/#2 Unfocused with showfunction=false`
+        `eq-sub-function-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -104,7 +103,7 @@ describe('Component for SCL element EqSubFunction ', () => {
         html`<eq-sub-function-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></eq-sub-function-editor>`
+        ></eq-sub-function-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '900';
@@ -123,7 +122,7 @@ describe('Component for SCL element EqSubFunction ', () => {
       await timeout(200);
       await visualDiff(
         document.body,
-        `eq-sub-function-editor/#3 Focused with showfunction=true`
+        `eq-sub-function-editor/#3 Focused with showfunction=true`,
       );
     });
   });

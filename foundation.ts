@@ -4,7 +4,7 @@ import './substation/general-equipment-editor.js';
 
 export function getChildElementsByTagName(
   element: Element | null | undefined,
-  tag: string | null | undefined
+  tag: string | null | undefined,
 ): Element[] {
   if (!element || !tag) return [];
   return Array.from(element.children).filter(child => child.tagName === tag);
@@ -371,7 +371,7 @@ const typeIcons: Partial<Record<string, TemplateResult>> = {
 export function crossProduct<T>(...arrays: T[][]): T[][] {
   return arrays.reduce<T[][]>(
     (a, b) => <T[][]>a.flatMap(d => b.map(e => [d, e].flat())),
-    [[]]
+    [[]],
   );
 }
 
@@ -400,10 +400,10 @@ function getLogicalNodeInstance(lNode: Element | null): Element | null {
       lDevicePath,
       [' > '],
       lNSelector,
-      lNPrefixSelector
+      lNPrefixSelector,
     )
       .map(strings => strings.join(''))
-      .join(',')
+      .join(','),
   );
 }
 
@@ -412,13 +412,13 @@ function getSwitchTypeValueFromDTT(lNorlNode: Element): string | undefined {
   const lNodeType = lNorlNode.getAttribute('lnType');
   const lnClass = lNorlNode.getAttribute('lnClass');
   const dObj = rootNode.querySelector(
-    `DataTypeTemplates > LNodeType[id="${lNodeType}"][lnClass="${lnClass}"] > DO[name="SwTyp"]`
+    `DataTypeTemplates > LNodeType[id="${lNodeType}"][lnClass="${lnClass}"] > DO[name="SwTyp"]`,
   );
   if (dObj) {
     const dORef = dObj.getAttribute('type');
     return rootNode
       .querySelector(
-        `DataTypeTemplates > DOType[id="${dORef}"] > DA[name="stVal"] > Val`
+        `DataTypeTemplates > DOType[id="${dORef}"] > DA[name="stVal"] > Val`,
       )
       ?.innerHTML.trim();
   }
@@ -428,7 +428,7 @@ function getSwitchTypeValueFromDTT(lNorlNode: Element): string | undefined {
 
 function getSwitchTypeValue(lN: Element): string | undefined {
   const daInstantiated = lN.querySelector(
-    'DOI[name="SwTyp"] > DAI[name="stVal"]'
+    'DOI[name="SwTyp"] > DAI[name="stVal"]',
   );
   // definition is on instantiated object
   if (daInstantiated) {
@@ -455,7 +455,7 @@ function containsEarthSwitchDefinition(condEq: Element): boolean {
 
 function containsGroundedTerminal(condEq: Element): boolean {
   return Array.from(condEq.querySelectorAll('Terminal')).some(
-    t => t.getAttribute('cNodeName') === 'grounded'
+    t => t.getAttribute('cNodeName') === 'grounded',
   );
 }
 
@@ -475,7 +475,6 @@ export function getIcon(condEq: Element): TemplateResult {
   return typeIcons[typeStr(condEq)] ?? generalConductingEquipmentIcon;
 }
 
-/* eslint-disable no-undef */
 interface WizardRequestBase {
   subWizard?: boolean;
 }
@@ -491,12 +490,19 @@ export interface CreateWizardRequest extends WizardRequestBase {
 
 export type WizardRequest = EditWizardRequest | CreateWizardRequest;
 
-export function isEditRequest(wizard: any): wizard is EditWizardRequest {
-  return 'element' in wizard && 'tagName' in wizard;
+export function isEditRequest(wizard: unknown): wizard is EditWizardRequest {
+  return (
+    typeof wizard === 'object' &&
+    wizard !== null &&
+    'element' in wizard &&
+    'tagName' in wizard
+  );
 }
 
-export function isCreateRequest(wizard: any): wizard is CreateWizardRequest {
-  return 'parent' in wizard;
+export function isCreateRequest(
+  wizard: unknown,
+): wizard is CreateWizardRequest {
+  return typeof wizard === 'object' && wizard !== null && 'parent' in wizard;
 }
 
 type EditWizardEvent = CustomEvent<EditWizardRequest>;
@@ -508,7 +514,7 @@ type CloseWizardEvent = CustomEvent<WizardRequest>;
 export function newEditWizardEvent(
   element: Element,
   subWizard?: boolean,
-  eventInitDict?: CustomEventInit<Partial<EditWizardRequest>>
+  eventInitDict?: CustomEventInit<Partial<EditWizardRequest>>,
 ): EditWizardEvent {
   return new CustomEvent<EditWizardRequest>('oscd-edit-wizard-request', {
     bubbles: true,
@@ -522,7 +528,7 @@ export function newCreateWizardEvent(
   parent: Element,
   tagName: string,
   subWizard?: boolean,
-  eventInitDict?: CustomEventInit<Partial<CreateWizardRequest>>
+  eventInitDict?: CustomEventInit<Partial<CreateWizardRequest>>,
 ): CreateWizardEvent {
   return new CustomEvent<CreateWizardRequest>('oscd-create-wizard-request', {
     bubbles: true,
@@ -539,7 +545,7 @@ export function newCreateWizardEvent(
 
 export function newCloseWizardEvent(
   wizard: WizardRequest,
-  eventInitDict?: CustomEventInit<Partial<WizardRequest>>
+  eventInitDict?: CustomEventInit<Partial<WizardRequest>>,
 ): CloseWizardEvent {
   return new CustomEvent<WizardRequest>('oscd-close-wizard', {
     bubbles: true,

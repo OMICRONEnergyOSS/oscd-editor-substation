@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element Process ', () => {
         html`<process-editor
           .element=${proc}
           ?showfunctions=${true}
-        ></process-editor>`
+        ></process-editor>`,
       );
       document.body.style.width = '270';
       document.body.style.height = '500';
@@ -68,7 +67,7 @@ describe('Component for SCL element Process ', () => {
         .querySelector(`Process[name="proc2"]`)!;
 
       editor = await fixture(
-        html`<process-editor .element=${line}></process-editor>`
+        html`<process-editor .element=${line}></process-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '1000';
@@ -86,7 +85,7 @@ describe('Component for SCL element Process ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `process-editor/#2 Unfocused with showfunction=false`
+        `process-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -102,7 +101,7 @@ describe('Component for SCL element Process ', () => {
         html`<process-editor
           .element=${line}
           ?showfunctions=${true}
-        ></process-editor>`
+        ></process-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '1400';
@@ -119,7 +118,7 @@ describe('Component for SCL element Process ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `process-editor/#3 Focused with showfunction=true`
+        `process-editor/#3 Focused with showfunction=true`,
       );
     });
   });

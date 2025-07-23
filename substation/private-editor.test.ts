@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { resetMouse, sendMouse, setViewport } from '@web/test-runner-commands';
@@ -37,7 +36,7 @@ describe('Component for SCL element Private ', () => {
           .element=${subst}
           ?showfunctions=${false}
           ?showuserdef=${false}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -56,7 +55,7 @@ describe('Component for SCL element Private ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `private-editor/#1 Unfocused with showfunction false`
+        `private-editor/#1 Unfocused with showfunction false`,
       );
     });
   });
@@ -73,7 +72,7 @@ describe('Component for SCL element Private ', () => {
           .element=${subst}
           ?showfunctions=${true}
           ?showuserdef=${true}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -94,7 +93,7 @@ describe('Component for SCL element Private ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `private-editor/#2 Focused with showfunction true and showuserdef true`
+        `private-editor/#2 Focused with showfunction true and showuserdef true`,
       );
     });
   });
@@ -111,7 +110,7 @@ describe('Component for SCL element Private ', () => {
           .element=${subst}
           ?showfunctions=${true}
           ?showuserdef=${false}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -131,7 +130,7 @@ describe('Component for SCL element Private ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `private-editor/#3 Focused with showfunction true and showuserdef false`
+        `private-editor/#3 Focused with showfunction true and showuserdef false`,
       );
     });
   });
