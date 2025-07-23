@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element Function ', () => {
         html`<function-editor
           .element=${func}
           ?showfunctions=${true}
-        ></function-editor>`
+        ></function-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '400';
@@ -68,7 +67,7 @@ describe('Component for SCL element Function ', () => {
         .querySelector(`Function[name="func2"]`)!;
 
       editor = await fixture(
-        html`<function-editor .element=${subFunc}></function-editor>`
+        html`<function-editor .element=${subFunc}></function-editor>`,
       );
       document.body.style.width = '600';
       document.body.style.height = '600';
@@ -90,7 +89,7 @@ describe('Component for SCL element Function ', () => {
       await timeout(800);
       await visualDiff(
         document.body,
-        `function-editor/#2 Unfocused with showfunction=false`
+        `function-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -106,7 +105,7 @@ describe('Component for SCL element Function ', () => {
         html`<function-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></function-editor>`
+        ></function-editor>`,
       );
       document.body.style.width = '600';
       document.body.style.height = '1000';
@@ -128,7 +127,7 @@ describe('Component for SCL element Function ', () => {
       await timeout(800);
       await visualDiff(
         document.body,
-        `function-editor/#3 Focused with showfunction=true`
+        `function-editor/#3 Focused with showfunction=true`,
       );
     });
   });

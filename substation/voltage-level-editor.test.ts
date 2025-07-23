@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element VoltageLevel ', () => {
         html`<voltage-level-editor
           .element=${voltLv}
           ?showfunctions=${true}
-        ></voltage-level-editor>`
+        ></voltage-level-editor>`,
       );
       document.body.style.width = '500';
       document.body.style.height = '500';
@@ -58,7 +57,7 @@ describe('Component for SCL element VoltageLevel ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `voltage-level-editor/#1 add menu visible`
+        `voltage-level-editor/#1 add menu visible`,
       );
     });
   });
@@ -71,7 +70,7 @@ describe('Component for SCL element VoltageLevel ', () => {
         .querySelector(`VoltageLevel[name="testVoltLv2"]`)!;
 
       editor = await fixture(
-        html`<voltage-level-editor .element=${voltLv}></voltage-level-editor>`
+        html`<voltage-level-editor .element=${voltLv}></voltage-level-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -90,7 +89,7 @@ describe('Component for SCL element VoltageLevel ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `voltage-level-editor/#2 Unfocused with showfunction=false`
+        `voltage-level-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -106,7 +105,7 @@ describe('Component for SCL element VoltageLevel ', () => {
         html`<voltage-level-editor
           .element=${voltLv}
           ?showfunctions=${true}
-        ></voltage-level-editor>`
+        ></voltage-level-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '2200';
@@ -125,7 +124,7 @@ describe('Component for SCL element VoltageLevel ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `voltage-level-editor/#3 Focused with showfunction=true`
+        `voltage-level-editor/#3 Focused with showfunction=true`,
       );
     });
   });

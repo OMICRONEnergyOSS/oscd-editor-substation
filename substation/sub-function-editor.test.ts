@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element SubFunction ', () => {
         html`<sub-function-editor
           .element=${subFunc}
           ?showfunctions=${true}
-        ></sub-function-editor>`
+        ></sub-function-editor>`,
       );
       document.body.style.width = '540';
       document.body.style.height = '400';
@@ -58,7 +57,7 @@ describe('Component for SCL element SubFunction ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `sub-function-editor/#1 add menu visible`
+        `sub-function-editor/#1 add menu visible`,
       );
     });
   });
@@ -71,7 +70,7 @@ describe('Component for SCL element SubFunction ', () => {
         .querySelector(`SubFunction[name="subFunc1"]`)!;
 
       editor = await fixture(
-        html`<sub-function-editor .element=${subFunc}></sub-function-editor>`
+        html`<sub-function-editor .element=${subFunc}></sub-function-editor>`,
       );
       document.body.style.width = '600';
       document.body.style.height = '600';
@@ -93,7 +92,7 @@ describe('Component for SCL element SubFunction ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `sub-function-editor/#2 Unfocused with showfunction=false`
+        `sub-function-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -109,7 +108,7 @@ describe('Component for SCL element SubFunction ', () => {
         html`<sub-function-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></sub-function-editor>`
+        ></sub-function-editor>`,
       );
       document.body.style.width = '600';
       document.body.style.height = '1000';
@@ -131,7 +130,7 @@ describe('Component for SCL element SubFunction ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `sub-function-editor/#3 Focused with showfunction=true`
+        `sub-function-editor/#3 Focused with showfunction=true`,
       );
     });
   });

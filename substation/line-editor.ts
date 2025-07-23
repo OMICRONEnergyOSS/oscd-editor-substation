@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
@@ -58,32 +57,32 @@ export class LineEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${renderConductingEquipments(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderGeneralEquipment(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderFunctions(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
     </oscd-action-pane>`;
   }
@@ -97,7 +96,7 @@ export function renderLines(
   parent: Element,
   editCount: number,
   showfunctions: boolean,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const lines = getChildElementsByTagName(parent, 'Line');
 
@@ -108,6 +107,6 @@ export function renderLines(
         .editCount=${editCount}
         ?showfunctions=${showfunctions}
         ?showuserdef=${showuserdef}
-      ></line-editor>`
+      ></line-editor>`,
   )}`;
 }

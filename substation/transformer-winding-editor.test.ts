@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element SubEquipment ', () => {
         html`<transformer-winding-editor
           .element=${subFunc}
           ?showfunctions=${true}
-        ></transformer-winding-editor>`
+        ></transformer-winding-editor>`,
       );
       document.body.style.width = '300';
       document.body.style.height = '600';
@@ -58,7 +57,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `transformer-winding-editor/#1 add menu visible`
+        `transformer-winding-editor/#1 add menu visible`,
       );
     });
   });
@@ -73,7 +72,7 @@ describe('Component for SCL element SubEquipment ', () => {
       editor = await fixture(
         html`<transformer-winding-editor
           .element=${subFunc}
-        ></transformer-winding-editor>`
+        ></transformer-winding-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '800';
@@ -95,7 +94,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `transformer-winding-editor/#2 Unfocused with showfunction=false`
+        `transformer-winding-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -111,7 +110,7 @@ describe('Component for SCL element SubEquipment ', () => {
         html`<transformer-winding-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></transformer-winding-editor>`
+        ></transformer-winding-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '1000';
@@ -133,7 +132,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `transformer-winding-editor/#3 Focused with showfunction=true`
+        `transformer-winding-editor/#3 Focused with showfunction=true`,
       );
     });
   });

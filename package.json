@@ -1,107 +1,116 @@
 {
-  "name": "oscd-save",
-  "description": "Webcomponent oscd-save following open-wc recommendations",
-  "license": "Apache-2.0",
-  "author": "oscd-save",
+  "name": "@omicronenergy/oscd-editor-substation",
   "version": "0.0.0",
-  "main": "dist/oscd-save.js",
-  "module": "dist/oscd-save.js",
-  "exports": {
-    ".": "./dist/oscd-save.js"
+  "description": "OpenSCD Menu Plugin for loading IEC 61850 SCL files into OpenSCD.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OMICRONEnergyOSS/oscd-editor-substation.git"
   },
+  "bugs": {
+    "url": "https://github.com/OMICRONEnergyOSS/oscd-editor-substation/issues"
+  },
+  "homepage": "https://openscd.org",
+  "keywords": [
+    "OpenSCD",
+    "iec81650"
+  ],
+  "author": "OMICRON Electronics GmbH",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./dist/oscd-editor-substation.js",
+    "./oscd-editor-substation.js": "./dist/oscd-editor-substation.js"
+  },
+  "files": [
+    "/dist/",
+    "!/dist/*.spec.*",
+    "!/dist/*.test.*"
+  ],
   "scripts": {
-    "analyze": "cem analyze --litelement",
-    "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
-    "build": "rimraf dist && rollup -c rollup.config.js",
-    "deploy": "npm run build && gh-pages --dist 'dist'",
-    "prepublish": "tsc && npm run analyze -- --exclude dist",
-    "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
-    "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
-    "test": "playwright install && tsc && wtr --coverage",
-    "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch --coverage\"",
-    "test:unit": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --group unit --watch --coverage\"",
-    "test:visual": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --group visual --watch --coverage\"",
-    "test:update": "tsc && wtr --group visual --update-visual-baseline"
+    "lint": "eslint .",
+    "format": "eslint . --fix",
+    "analyze": "cem analyze --litelement --exclude demo/* --exclude dist/* --exclude *.spec.ts --exclude *.test.ts --exclude coverage/*",
+    "copy-demo": "cp -r ./demo ./dist/",
+    "start": "npm run build && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds --node-resolve \"",
+    "start:bundle": "npm run bundle && concurrently -k -r \"rollup -c rollup.config.js --watch\" \"wds --watch \"",
+    "build": "rimraf dist && mkdir dist && npm run copy-demo && npm run analyze -- --exclude dist && tsc ",
+    "bundle": "rimraf dist && rollup -c rollup.config.js",
+    "test": "npm run build && wtr --coverage",
+    "test:watch": "npm run build && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --coverage --watch\"",
+    "test:unit": "npm run build && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --group unit --watch --coverage\"",
+    "test:visual": "npm run build && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --group visual --watch --coverage\"",
+    "test:update": "npm run build && wtr --group visual --update-visual-baseline",
+    "prepare": "husky"
   },
   "dependencies": {
     "@material/mwc-fab": "^0.27.0",
     "@material/mwc-icon": "^0.27.0",
     "@material/mwc-icon-button": "^0.27.0",
     "@material/mwc-icon-button-toggle": "^0.27.0",
+    "@material/mwc-list": "^0.27.0",
     "@material/mwc-menu": "^0.27.0",
-    "@openenergytools/scl-lib": "^0.8.17",
+    "@omicronenergy/oscd-api": "^0.1.1",
+    "@omicronenergy/oscd-background-editv1": "^0.0.6",
+    "@omicronenergy/oscd-background-wizard-events": "^0.0.1",
+    "@omicronenergy/oscd-menu-open": "^0.0.6",
+    "@omicronenergy/oscd-menu-save": "^0.0.1",
+    "@omicronenergy/oscd-shell": "^0.0.8",
+    "@openenergytools/scl-lib": "^1.6.0",
     "@openscd/oscd-action-icon": "^1.0.0",
     "@openscd/oscd-action-pane": "^1.0.1",
-    "lit": "^2.4.0"
+    "lit": "^3.3.0",
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.6.6",
-    "@open-wc/building-rollup": "^2.0.2",
-    "@open-wc/eslint-config": "^8.0.2",
-    "@open-wc/testing": "^3.1.6",
-    "@openscd/open-scd-core": "^0.0.2",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-typescript": "^9.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "@typescript-eslint/parser": "^5.41.0",
-    "@web/dev-server": "^0.1.35",
-    "@web/rollup-plugin-import-meta-assets": "^2.1.0",
-    "@web/test-runner": "^0.15.0",
-    "@web/test-runner-commands": "0.09",
-    "@web/test-runner-playwright": "^0.11.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.31.0",
+    "@open-wc/eslint-config": "^13.0.0",
+    "@open-wc/testing": "4.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@types/mocha": "^10.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "@web/dev-server": "^0.4.6",
+    "@web/rollup-plugin-html": "^2.3.0",
+    "@web/test-runner": "0.20.2",
+    "@web/test-runner-commands": "^0.9.0",
+    "@web/test-runner-playwright": "^0.11.1",
     "@web/test-runner-visual-regression": "^0.9.0",
-    "concurrently": "^7.5.0",
+    "concurrently": "^9.2.0",
     "deepmerge": "^4.2.2",
-    "eslint": "^8.26.0",
-    "eslint-config-prettier": "^8.5.0",
-    "gh-pages": "^4.0.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.79.1",
-    "sinon": "^17.0.1",
-    "tslib": "^2.4.1",
-    "typescript": "^4.8.4"
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-html": "^8.1.3",
+    "eslint-plugin-lit": "^2.1.1",
+    "eslint-plugin-lit-a11y": "^5.1.0",
+    "eslint-plugin-no-only-tests": "^3.3.0",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-tsdoc": "^0.4.0",
+    "eslint-plugin-wc": "^3.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.45.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "sinon": "^21.0.0",
+    "typedoc": "^0.28.7",
+    "typescript": "^5.8.3"
   },
   "customElements": "custom-elements.json",
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "extends": [
-      "@open-wc",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error"
-      ],
-      "import/no-unresolved": "off",
-      "import/extensions": [
-        "error",
-        "always",
-        {
-          "ignorePackages": true
-        }
-      ]
-    }
-  },
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.ts": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "eslint"
     ]
   }
 }

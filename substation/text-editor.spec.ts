@@ -1,11 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-expressions */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { expect, fixture, html } from '@open-wc/testing';
 
 import { SinonSpy, spy } from 'sinon';
 
-import { isRemove } from '@openscd/open-scd-core';
+import { isRemove } from '@omicronenergy/oscd-api/utils.js';
 
 import { substationDoc } from '../substation.testfiles.js';
 
@@ -27,7 +24,7 @@ describe('Component for SCL element Text ', () => {
         html`<text-editor
           .element="${eqFun}"
           ?showfunctions=${true}
-        ></text-editor>`
+        ></text-editor>`,
       );
 
       eventSpy = spy();
@@ -39,7 +36,7 @@ describe('Component for SCL element Text ', () => {
     it('sends a wizard edit request', () => {
       editor.editActionable?.click();
 
-      expect(eventSpy).to.have.been.calledOnce;
+      expect(eventSpy.callCount).to.equal(1);
 
       const event = eventSpy.args[0][0];
       expect(event.type).to.equal('oscd-edit-wizard-request');
@@ -50,7 +47,7 @@ describe('Component for SCL element Text ', () => {
       editor.addActionable?.forEach(add => {
         add.click();
 
-        expect(eventSpy).to.have.been.calledOnce;
+        expect(eventSpy.callCount).to.equal(1);
 
         const event = eventSpy.args[0][0];
         expect(event.type).to.equal('oscd-create-wizard-request');
@@ -64,7 +61,7 @@ describe('Component for SCL element Text ', () => {
     it('allows to remove an existing Text element', () => {
       editor.removeActionable?.click();
 
-      expect(eventSpy).to.have.been.calledOnce;
+      expect(eventSpy.callCount).to.equal(1);
 
       const event = eventSpy.args[0][0];
 
@@ -81,7 +78,7 @@ describe('Component for SCL element Text ', () => {
 
     beforeEach(async () => {
       editor = await fixture(
-        html`<text-editor .element="${eqFun}"></text-editor>`
+        html`<text-editor .element="${eqFun}"></text-editor>`,
       );
 
       eventSpy = spy();
@@ -93,7 +90,7 @@ describe('Component for SCL element Text ', () => {
     it('sends a wizard edit request', () => {
       editor.editActionable?.click();
 
-      expect(eventSpy).to.have.been.calledOnce;
+      expect(eventSpy.callCount).to.equal(1);
 
       const event = eventSpy.args[0][0];
       expect(event.type).to.equal('oscd-edit-wizard-request');
@@ -103,7 +100,7 @@ describe('Component for SCL element Text ', () => {
     it('allows to remove an existing EqFunction element', () => {
       editor.removeActionable?.click();
 
-      expect(eventSpy).to.have.been.calledOnce;
+      expect(eventSpy.callCount).to.equal(1);
 
       const event = eventSpy.args[0][0];
 

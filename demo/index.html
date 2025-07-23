@@ -1,49 +1,47 @@
-<title>oscd-save Demo</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons&display=block">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-<open-scd plugins='{
-  "menu": 
-  [
-    {"name": "Open File", "translations": {"de": "Datei öffnen"}, "icon": "folder_open", "active": true, "src": "https://openscd.github.io/oscd-open/oscd-open.js"}, 
-    {"name": "Save File", "translations": {"de": "Datei speichern"}, "icon": "save", "active": true, "src": "https://openscd.github.io/oscd-save/oscd-save.js"},
-    {"name": "Wizarding", "translations": {"de": "Wizarding"}, "icon": "publish", "active": true, "src": "https://openenergytools.github.io/scl-wizarding/scl-wizarding.js"}
-  ],
-  "editor": 
-  [
-    {"name": "Substation", "translations": {"de": "Schaltanlage"}, "icon": "publish", "active": true, "src": "/dist/scl-substation-editor.js"}
-  ]
-}'></open-scd>
+<title>oscd-designer demo</title>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300;400;500&display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Material+Symbols+Outlined&display=block"
+/>
+<oscd-shell></oscd-shell>
 
 <script type="module">
-import '@openscd/open-scd-core/open-scd.js';
+  import '@omicronenergy/oscd-shell/oscd-shell.js';
+  import { plugins } from './plugins.js';
+  import { substationDoc } from '../substation.testfiles.js';
 
-const editor = document.querySelector('open-scd');
-const params = (new URL(document.location)).searchParams;
-for (const [name, value] of params) {
-editor.setAttribute(name, value);
-}
-</script>
+  const editor = document.querySelector('oscd-shell');
+  editor.plugins = plugins;
 
-<script>
-  const _customElementsDefine = window.customElements.define;
-  window.customElements.define = (name, cl, conf) => {
-    if (!customElements.get(name)) {
-      try {
-        _customElementsDefine.call(window.customElements, name, cl, conf);
-      } catch (e) { console.warn(e); }
-    }
+  const params = new URL(document.location).searchParams;
+  for (const [name, value] of params) {
+    editor.setAttribute(name, value);
+  }
+
+  editor.docs = {
+    ['sample.scd']: new DOMParser().parseFromString(
+      substationDoc,
+      'application/xml',
+    ),
   };
+  editor.docName = 'sample.scd';
 </script>
 
 <style>
-* {
-  margin: 0px;
-  padding: 0px;
-  --mdc-icon-font: 'Material Symbols Outlined';
-}
+  * {
+    --oscd-theme-text-font: 'Roboto';
+    --oscd-theme-icon-font: 'Material Symbols Outlined';
 
-body {
-  background: white;
-}
+    margin: 0px;
+    padding: 0px;
+  }
+
+  abbr {
+    text-decoration: none;
+    border-bottom: none;
+  }
 </style>

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element SubEquipment ', () => {
         html`<sub-equipment-editor
           .element=${subFunc}
           ?showfunctions=${true}
-        ></sub-equipment-editor>`
+        ></sub-equipment-editor>`,
       );
       document.body.style.width = '250';
       document.body.style.height = '300';
@@ -58,7 +57,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `sub-equipment-editor/#1 add menu visible`
+        `sub-equipment-editor/#1 add menu visible`,
       );
     });
   });
@@ -71,7 +70,7 @@ describe('Component for SCL element SubEquipment ', () => {
         .querySelector(`SubEquipment[name="phsA"]`)!;
 
       editor = await fixture(
-        html`<sub-equipment-editor .element=${subFunc}></sub-equipment-editor>`
+        html`<sub-equipment-editor .element=${subFunc}></sub-equipment-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '400';
@@ -93,7 +92,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `sub-equipment-editor/#2 Unfocused with showfunction=false`
+        `sub-equipment-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -109,7 +108,7 @@ describe('Component for SCL element SubEquipment ', () => {
         html`<sub-equipment-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></sub-equipment-editor>`
+        ></sub-equipment-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '400';
@@ -131,7 +130,7 @@ describe('Component for SCL element SubEquipment ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `sub-equipment-editor/#3 Focused with showfunction=true`
+        `sub-equipment-editor/#3 Focused with showfunction=true`,
       );
     });
   });

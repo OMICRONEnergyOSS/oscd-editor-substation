@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -37,7 +36,7 @@ describe('Component for SCL element Text ', () => {
           .element=${subst}
           ?showfunctions=${false}
           ?showuserdef=${false}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -56,7 +55,7 @@ describe('Component for SCL element Text ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `text-editor/#1 Unfocused with showfunction false and showuserdef false`
+        `text-editor/#1 Unfocused with showfunction false and showuserdef false`,
       );
     });
   });
@@ -73,7 +72,7 @@ describe('Component for SCL element Text ', () => {
           .element=${subst}
           ?showfunctions=${true}
           ?showuserdef=${true}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -93,7 +92,7 @@ describe('Component for SCL element Text ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `text-editor/#2 Focused with showfunction=true and showuserdef true`
+        `text-editor/#2 Focused with showfunction=true and showuserdef true`,
       );
     });
   });
@@ -110,7 +109,7 @@ describe('Component for SCL element Text ', () => {
           .element=${subst}
           ?showfunctions=${true}
           ?showuserdef=${false}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -128,7 +127,7 @@ describe('Component for SCL element Text ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `text-editor/#3 Focused with showfunction true and showuserdef false`
+        `text-editor/#3 Focused with showfunction true and showuserdef false`,
       );
     });
   });

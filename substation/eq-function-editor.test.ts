@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -33,7 +32,7 @@ describe('Component for SCL element EqSubFunction ', () => {
         .querySelector(`EqFunction[name="eqFunc1"]`)!;
 
       editor = await fixture(
-        html`<eq-function-editor .element=${subFunc}></eq-function-editor>`
+        html`<eq-function-editor .element=${subFunc}></eq-function-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '900';
@@ -62,7 +61,7 @@ describe('Component for SCL element EqSubFunction ', () => {
         .querySelector(`EqFunction[name="eqFunc2"]`)!;
 
       editor = await fixture(
-        html`<eq-function-editor .element=${subFunc}></eq-function-editor>`
+        html`<eq-function-editor .element=${subFunc}></eq-function-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '900';
@@ -81,7 +80,7 @@ describe('Component for SCL element EqSubFunction ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `eq-function-editor/#2 Unfocused with showfunction=false`
+        `eq-function-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -97,7 +96,7 @@ describe('Component for SCL element EqSubFunction ', () => {
         html`<eq-function-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></eq-function-editor>`
+        ></eq-function-editor>`,
       );
       document.body.style.width = '800';
       document.body.style.height = '900';
@@ -116,7 +115,7 @@ describe('Component for SCL element EqSubFunction ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `eq-function-editor/#3 Focused with showfunction=true`
+        `eq-function-editor/#3 Focused with showfunction=true`,
       );
     });
   });

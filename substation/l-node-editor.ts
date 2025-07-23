@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
@@ -95,7 +94,7 @@ export class LNodeEditor extends BaseSubstationElementEditor {
 export function renderLNodes(
   parent: Element,
   editCount: number,
-  showfunctions: boolean
+  showfunctions: boolean,
 ): TemplateResult {
   if (!showfunctions) return html``;
 
@@ -108,7 +107,7 @@ export function renderLNodes(
             html`<l-node-editor
               .editCount=${editCount}
               .element=${lNode}
-            ></l-node-editor>`
+            ></l-node-editor>`,
         )}
       </div>`
     : html``;

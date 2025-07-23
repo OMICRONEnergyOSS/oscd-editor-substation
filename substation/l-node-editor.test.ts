@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -52,7 +51,7 @@ describe('Component for SCL element LNode', () => {
             .querySelector(`LNode[lnClass="${group}xxx"]`)!;
 
           editor = await fixture(
-            html`<l-node-editor .element=${lNode}></l-node-editor>`
+            html`<l-node-editor .element=${lNode}></l-node-editor>`,
           );
 
           document.body.style.width = '300';
@@ -76,7 +75,7 @@ describe('Component for SCL element LNode', () => {
           await timeout(100);
           await visualDiff(
             document.body,
-            `l-node-editor/#${index + 1} ${group}xxx`
+            `l-node-editor/#${index + 1} ${group}xxx`,
           );
         });
       });
@@ -91,7 +90,7 @@ describe('Component for SCL element LNode', () => {
         .querySelector(`LNode:not([lnClass])`)!;
 
       editor = await fixture(
-        html`<l-node-editor .element=${lNode}></l-node-editor>`
+        html`<l-node-editor .element=${lNode}></l-node-editor>`,
       );
       document.body.style.width = '300';
       document.body.style.height = '300';
@@ -122,7 +121,7 @@ describe('Component for SCL element LNode', () => {
         .querySelector(`LNode[iedName="None"]`)!;
 
       editor = await fixture(
-        html`<l-node-editor .element=${lNode}></l-node-editor>`
+        html`<l-node-editor .element=${lNode}></l-node-editor>`,
       );
 
       document.body.style.width = '300';
@@ -143,7 +142,7 @@ describe('Component for SCL element LNode', () => {
       await timeout(200);
       await visualDiff(
         document.body,
-        `l-node-editor/#18 unfocussed DataTypeTemplate reference`
+        `l-node-editor/#18 unfocussed DataTypeTemplate reference`,
       );
     });
   });
@@ -156,7 +155,7 @@ describe('Component for SCL element LNode', () => {
         .querySelector(`LNode[iedName="None"]`)!;
 
       editor = await fixture(
-        html`<l-node-editor .element=${lNode}></l-node-editor>`
+        html`<l-node-editor .element=${lNode}></l-node-editor>`,
       );
 
       document.body.style.width = '300';
@@ -179,7 +178,7 @@ describe('Component for SCL element LNode', () => {
       await timeout(200);
       await visualDiff(
         document.body,
-        `l-node-editor/#19 focused DataTypeTemplate reference`
+        `l-node-editor/#19 focused DataTypeTemplate reference`,
       );
     });
   });
@@ -192,7 +191,7 @@ describe('Component for SCL element LNode', () => {
         .querySelector(`LNode`)!;
 
       editor = await fixture(
-        html`<l-node-editor .element=${lNode}></l-node-editor>`
+        html`<l-node-editor .element=${lNode}></l-node-editor>`,
       );
       document.body.style.width = '300';
       document.body.style.height = '300';
@@ -214,7 +213,7 @@ describe('Component for SCL element LNode', () => {
       await timeout(200);
       await visualDiff(
         document.body,
-        `l-node-editor/#20 Focused l-node-editor`
+        `l-node-editor/#20 Focused l-node-editor`,
       );
     });
   });

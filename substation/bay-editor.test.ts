@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -33,7 +32,7 @@ describe('Component for SCL element Bay ', () => {
         .querySelector(`Bay[name="testBay1"]`)!;
 
       editor = await fixture(
-        html`<bay-editor .element=${bay} ?showfunctions=${true}></bay-editor>`
+        html`<bay-editor .element=${bay} ?showfunctions=${true}></bay-editor>`,
       );
       document.body.style.width = '300';
       document.body.style.height = '500';
@@ -85,7 +84,7 @@ describe('Component for SCL element Bay ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `bay-editor/#2 Unfocused with showfunction=false`
+        `bay-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -98,7 +97,7 @@ describe('Component for SCL element Bay ', () => {
         .querySelector(`Bay[name="testBay2"]`)!;
 
       editor = await fixture(
-        html`<bay-editor .element=${bay} ?showfunctions=${true}></bay-editor>`
+        html`<bay-editor .element=${bay} ?showfunctions=${true}></bay-editor>`,
       );
       document.body.style.width = '400';
       document.body.style.height = '2000';
@@ -120,7 +119,7 @@ describe('Component for SCL element Bay ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `bay-editor/#3 Focused with showfunction=true`
+        `bay-editor/#3 Focused with showfunction=true`,
       );
     });
   });

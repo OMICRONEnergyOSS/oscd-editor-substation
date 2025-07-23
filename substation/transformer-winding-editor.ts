@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -36,7 +35,7 @@ export class TransformerWindingEditor extends BaseSubstationElementEditor {
           .editCount=${this.editCount}
           ?showfunctions=${this.showfunctions}
           ?showuserdef=${this.showuserdef}
-        ></tap-changer-editor>`
+        ></tap-changer-editor>`,
     )}`;
   }
 
@@ -61,13 +60,13 @@ export class TransformerWindingEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${this.renderTapChanger()}
@@ -76,7 +75,7 @@ export class TransformerWindingEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
     </oscd-action-pane> `;
   }

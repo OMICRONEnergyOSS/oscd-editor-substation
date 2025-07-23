@@ -1,0 +1,20 @@
+name: Test
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.54.1-noble
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-node-env
+
+      - name: Build
+        run: npm run-script build
+
+      - name: Run unit tests
+        run: npm run-script test

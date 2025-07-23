@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element ConductingEquipment ', () => {
         html`<conducting-equipment-editor
           .element=${subFunc}
           ?showfunctions=${true}
-        ></conducting-equipment-editor>`
+        ></conducting-equipment-editor>`,
       );
       document.body.style.width = '450';
       document.body.style.height = '600';
@@ -58,7 +57,7 @@ describe('Component for SCL element ConductingEquipment ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `conducting-equipment-editor/#1 add menu visible`
+        `conducting-equipment-editor/#1 add menu visible`,
       );
     });
   });
@@ -73,7 +72,7 @@ describe('Component for SCL element ConductingEquipment ', () => {
       editor = await fixture(
         html`<conducting-equipment-editor
           .element=${subFunc}
-        ></conducting-equipment-editor>`
+        ></conducting-equipment-editor>`,
       );
       document.body.style.width = '200';
       document.body.style.height = '200';
@@ -95,7 +94,7 @@ describe('Component for SCL element ConductingEquipment ', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `conducting-equipment-editor/#2 Unfocused with showfunction=false`
+        `conducting-equipment-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -111,7 +110,7 @@ describe('Component for SCL element ConductingEquipment ', () => {
         html`<conducting-equipment-editor
           .element=${lNode}
           ?showfunctions=${true}
-        ></conducting-equipment-editor>`
+        ></conducting-equipment-editor>`,
       );
       document.body.style.width = '550';
       document.body.style.height = '950';
@@ -133,7 +132,7 @@ describe('Component for SCL element ConductingEquipment ', () => {
       await timeout(200);
       await visualDiff(
         document.body,
-        `conducting-equipment-editor/#3 Focused with showfunction=true`
+        `conducting-equipment-editor/#3 Focused with showfunction=true`,
       );
     });
   });

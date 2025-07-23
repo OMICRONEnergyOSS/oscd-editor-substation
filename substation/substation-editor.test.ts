@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -36,7 +35,7 @@ describe('Component for SCL element Substation ', () => {
         html`<substation-editor
           .element=${voltLv}
           ?showfunctions=${true}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '320';
       document.body.style.height = '500';
@@ -68,7 +67,7 @@ describe('Component for SCL element Substation ', () => {
         .querySelector(`Substation[name="testSubst2"]`)!;
 
       editor = await fixture(
-        html`<substation-editor .element=${voltLv}></substation-editor>`
+        html`<substation-editor .element=${voltLv}></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '800';
@@ -87,7 +86,7 @@ describe('Component for SCL element Substation ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `substation-editor/#2 Unfocused with showfunction=false`
+        `substation-editor/#2 Unfocused with showfunction=false`,
       );
     });
   });
@@ -103,7 +102,7 @@ describe('Component for SCL element Substation ', () => {
         html`<substation-editor
           .element=${voltLv}
           ?showfunctions=${true}
-        ></substation-editor>`
+        ></substation-editor>`,
       );
       document.body.style.width = '1200';
       document.body.style.height = '2200';
@@ -122,7 +121,7 @@ describe('Component for SCL element Substation ', () => {
       await timeout(600);
       await visualDiff(
         document.body,
-        `substation-editor/#3 Focused with showfunction=true`
+        `substation-editor/#3 Focused with showfunction=true`,
       );
     });
   });

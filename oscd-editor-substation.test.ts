@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { fixture, html } from '@open-wc/testing';
 
 import { sendMouse, setViewport } from '@web/test-runner-commands';
@@ -7,7 +6,7 @@ import { visualDiff } from '@web/test-runner-visual-regression';
 
 import { missingSubstation, substationDoc } from './substation.testfiles.js';
 
-import SclSubstationEditorPlugin from './scl-substation-editor.js';
+import OscdEditorSubstation from './oscd-editor-substation.js';
 import { baseStyle } from './substation/base-visual.js';
 
 const factor = window.process && process.env.CI ? 4 : 2;
@@ -20,12 +19,12 @@ mocha.timeout(2000 * factor);
 
 const missingSubSt = new DOMParser().parseFromString(
   missingSubstation,
-  'application/xml'
+  'application/xml',
 );
 
 const substDoc = new DOMParser().parseFromString(
   substationDoc,
-  'application/xml'
+  'application/xml',
 );
 
 const style = document.createElement('style');
@@ -33,13 +32,13 @@ style.textContent = baseStyle;
 document.body.prepend(style);
 
 describe('SclCommunication editor component', () => {
-  customElements.define('scl-substation-plugin', SclSubstationEditorPlugin);
-  let editor: SclSubstationEditorPlugin;
+  customElements.define('scl-substation-plugin', OscdEditorSubstation);
+  let editor: OscdEditorSubstation;
 
   describe('with missing doc ', () => {
     beforeEach(async () => {
       editor = await fixture(
-        html`<scl-substation-plugin></scl-substation-plugin>`
+        html`<scl-substation-plugin></scl-substation-plugin>`,
       );
       document.body.prepend(editor);
     });
@@ -55,7 +54,7 @@ describe('SclCommunication editor component', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `scl-substation-editor/#1 Missing Document`
+        `scl-substation-editor/#1 Missing Document`,
       );
     });
   });
@@ -65,7 +64,7 @@ describe('SclCommunication editor component', () => {
       editor = await fixture(
         html`<scl-substation-plugin
           .doc=${missingSubSt}
-        ></scl-substation-plugin>`
+        ></scl-substation-plugin>`,
       );
       document.body.prepend(editor);
     });
@@ -81,7 +80,7 @@ describe('SclCommunication editor component', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `scl-substation-editor/#2 Missing Substation section`
+        `scl-substation-editor/#2 Missing Substation section`,
       );
     });
   });
@@ -89,7 +88,7 @@ describe('SclCommunication editor component', () => {
   describe('with Substation present ', () => {
     beforeEach(async () => {
       editor = await fixture(
-        html`<scl-substation-plugin .doc=${substDoc}></scl-substation-plugin>`
+        html`<scl-substation-plugin .doc=${substDoc}></scl-substation-plugin>`,
       );
       document.body.prepend(editor);
     });
@@ -110,7 +109,7 @@ describe('SclCommunication editor component', () => {
   describe('with function filter toggled ', () => {
     beforeEach(async () => {
       editor = await fixture(
-        html`<scl-substation-plugin .doc=${substDoc}></scl-substation-plugin>`
+        html`<scl-substation-plugin .doc=${substDoc}></scl-substation-plugin>`,
       );
       document.body.prepend(editor);
     });
@@ -128,7 +127,7 @@ describe('SclCommunication editor component', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `scl-substation-editor/#4 Function filter toggled`
+        `scl-substation-editor/#4 Function filter toggled`,
       );
     });
   });
@@ -136,7 +135,7 @@ describe('SclCommunication editor component', () => {
   describe('with function and user-defined filter toggled ', () => {
     beforeEach(async () => {
       editor = await fixture(
-        html`<scl-substation-plugin .doc=${substDoc}></scl-substation-plugin>`
+        html`<scl-substation-plugin .doc=${substDoc}></scl-substation-plugin>`,
       );
       document.body.prepend(editor);
     });
@@ -156,7 +155,7 @@ describe('SclCommunication editor component', () => {
       await timeout(400);
       await visualDiff(
         document.body,
-        `scl-substation-editor/#5 Function and user-defined filter toggled`
+        `scl-substation-editor/#5 Function and user-defined filter toggled`,
       );
     });
   });

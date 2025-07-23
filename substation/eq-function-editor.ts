@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { TemplateResult, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
@@ -49,20 +48,20 @@ export class EqFunctionEditor extends BaseSubstationElementEditor {
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderPrivate(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderLNodes(this.element, this.editCount, this.showfunctions)}
       ${renderGeneralEquipment(
         this.element,
         this.editCount,
         this.showfunctions,
-        this.showuserdef
+        this.showuserdef,
       )}
       ${renderEqSubFunctions(this.element, this.editCount, this.showfunctions)}
     </oscd-action-pane>`;
@@ -95,7 +94,7 @@ export class EqFunctionEditor extends BaseSubstationElementEditor {
 export function renderEqFunctions(
   parent: Element,
   editCount: number,
-  showuserdef: boolean
+  showuserdef: boolean,
 ): TemplateResult {
   const eqFunctions = getChildElementsByTagName(parent, 'EqFunction');
   return html` ${eqFunctions.map(
@@ -105,6 +104,6 @@ export function renderEqFunctions(
         .editCount=${editCount}
         ?showfunctions=${true}
         ?showuserdef=${showuserdef}
-      ></eq-function-editor>`
+      ></eq-function-editor>`,
   )}`;
 }
