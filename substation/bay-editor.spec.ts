@@ -24,13 +24,13 @@ describe('Component for SCL element Bay ', () => {
     );
 
     eventSpy = spy();
-    window.addEventListener('oscd-edit', eventSpy);
+    window.addEventListener('oscd-edit-v2', eventSpy);
     window.addEventListener('oscd-edit-wizard-request', eventSpy);
     window.addEventListener('oscd-create-wizard-request', eventSpy);
   });
 
   afterEach(() => {
-    window.removeEventListener('oscd-edit', eventSpy);
+    window.removeEventListener('oscd-edit-v2', eventSpy);
     window.removeEventListener('oscd-edit-wizard-request', eventSpy);
     window.removeEventListener('oscd-create-wizard-request', eventSpy);
     eventSpy.resetHistory();
@@ -68,8 +68,8 @@ describe('Component for SCL element Bay ', () => {
 
     const event = eventSpy.args[0][0];
 
-    expect(event.type).to.equal('oscd-edit');
-    expect(event.detail).to.satisfy(isRemove);
-    expect(event.detail.node).to.equal(bay);
+    expect(event.type).to.equal('oscd-edit-v2');
+    expect(event.detail.edit).to.satisfy(isRemove);
+    expect(event.detail.edit.node).to.equal(bay);
   });
 });

@@ -8,7 +8,7 @@ import type { IconButton } from '@material/mwc-icon-button';
 import type { ListItem } from '@material/mwc-list/mwc-list-item.js';
 import type { Menu } from '@material/mwc-menu';
 
-import { newEditEvent } from '@omicronenergy/oscd-api/utils.js';
+import { newEditEventV2 } from '@omicronenergy/oscd-api/utils.js';
 import { getChildren } from '@openenergytools/scl-lib';
 
 import { newCreateWizardEvent, newEditWizardEvent } from '../foundation.js';
@@ -53,7 +53,7 @@ export default class BaseSubstationElementEditor extends LitElement {
 
   removeElement(): void {
     this.dispatchEvent(
-      newEditEvent({
+      newEditEventV2({
         node: this.element,
       }),
     );

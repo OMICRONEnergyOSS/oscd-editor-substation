@@ -24,7 +24,7 @@ describe('Component for SCL element SubFunction', () => {
     );
 
     eventSpy = spy();
-    window.addEventListener('oscd-edit', eventSpy);
+    window.addEventListener('oscd-edit-v2', eventSpy);
     window.addEventListener('oscd-edit-wizard-request', eventSpy);
     window.addEventListener('oscd-create-wizard-request', eventSpy);
   });
@@ -61,8 +61,8 @@ describe('Component for SCL element SubFunction', () => {
 
     const event = eventSpy.args[0][0];
 
-    expect(event.type).to.equal('oscd-edit');
-    expect(event.detail).to.satisfy(isRemove);
-    expect(event.detail.node).to.equal(subFunc);
+    expect(event.type).to.equal('oscd-edit-v2');
+    expect(event.detail.edit).to.satisfy(isRemove);
+    expect(event.detail.edit.node).to.equal(subFunc);
   });
 });
